@@ -57,7 +57,9 @@ public class FolderServiceImpl implements FolderService {
 
     @Override
     public void deleteFolder(Long id, String email) {
-        folderRepository.deleteById(id);
+        Folder folder = folderRepository.findById(id)
+                .orElseThrow(() -> new FolderNotFoundException("Folder not found"));
+        folderRepository.delete(folder);
     }
 
 

@@ -29,4 +29,27 @@ public class AppUserController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody AppUser appUser) {
+        try {
+            AppUser newAppUser = appUserService.loginUser(appUser);
+            AppUserView appUserView = Convertion.covertToView(newAppUser, AppUserView.class);
+            return new ResponseEntity<>(appUserView, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/user/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody AppUser appUser) {
+        try {
+            AppUser newAppUser = appUserService.changePassword(appUser);
+            return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 }

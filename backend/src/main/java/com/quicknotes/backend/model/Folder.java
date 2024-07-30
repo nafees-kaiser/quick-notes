@@ -7,17 +7,18 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+
 @Table(uniqueConstraints = {
         @UniqueConstraint(
                 name = "appUserAndNameConstraint",
-                columnNames = {"name", "appUser"}
+                columnNames = {"name", "app_user_id"}
         )
 })
+@Entity
 public class Folder extends BaseEntity<Long> {
-    //    @Column
+    @Column
     private String name;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "app_user_id")
     private AppUser appUser;
 }

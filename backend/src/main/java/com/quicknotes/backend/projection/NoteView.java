@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public interface NoteView {
+    Long getId();
     String getTitle();
     String getContent();
     LocalDate getDateCreated();

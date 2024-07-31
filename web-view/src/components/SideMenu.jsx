@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getData} from "../api/apiCalling.jsx";
 import AddFolderModal from "../pages/home/AddFolderModal.jsx";
+import AddNoteModal from "../pages/home/AddNoteModal.jsx";
 
 export default function SideMenu({setIsModalOpen, setModal}) {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function SideMenu({setIsModalOpen, setModal}) {
             }
             else if(currentMenu==="addNote"){
                 setIsModalOpen(true);
-                setModal()
+                setModal(<AddNoteModal setIsModalOpen={setIsModalOpen}/>)
             }
         }
         else{
@@ -49,7 +50,7 @@ export default function SideMenu({setIsModalOpen, setModal}) {
     }
 
     return (
-        <div className="h-full w-1/4 border-2 border-black flex flex-col justify-start items-start divide-y divide-black px-10 py-6">
+        <div className="h-full w-1/4 flex flex-col justify-start items-start divide-y divide-black px-10 py-6">
             <div className="flex flex-col justify-center items-start gap-3 mb-4">
                 <MenuNavigation
                     text="Home"

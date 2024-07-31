@@ -55,7 +55,10 @@ export default function AddFolderModal({setIsModalOpen}) {
     const handleSubmit = async () => {
         try{
             const response = await postData("/user/add-folder", data, {"email": email})
-            console.log(response)
+            // console.log(response)
+            if(response.status === 201) {
+                setIsModalOpen(false);
+            }
         } catch (error) {
             console.log(error);
         }

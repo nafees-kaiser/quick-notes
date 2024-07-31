@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {getData} from "../../api/apiCalling.jsx";
 import {Link} from "react-router-dom";
 import AddFolderModal from "./AddFolderModal.jsx";
+import AddNoteModal from "./AddNoteModal.jsx";
 
 export default function HomeBody() {
     const [folders, setFolders] = useState([]);
@@ -56,6 +57,7 @@ export default function HomeBody() {
 
                 </div>
             </div>
+            {/*<AddNoteModal/>*/}
 
         </>
     )

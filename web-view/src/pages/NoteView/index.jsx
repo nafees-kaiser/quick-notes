@@ -1,7 +1,7 @@
-import HomeBody from "./HomeBody.jsx";
 import PageElement from "../../components/PageElement.jsx";
-export default function Home(){
-    const content = (<HomeBody/>)
+import NoteViewBody from "./NoteViewBody.jsx";
+export default function NoteView(){
+    const content = (<NoteViewBody/>)
 
     return(
         <PageElement content={content}/>

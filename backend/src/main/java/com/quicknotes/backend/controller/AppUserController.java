@@ -42,7 +42,7 @@ public class AppUserController {
         }
     }
 
-    @PostMapping("/user/forgot-password")
+    @PostMapping("/forgot-password")
     public ResponseEntity<?> forgotPassword(@RequestBody AppUser appUser) {
         try {
             AppUser newAppUser = appUserService.changePassword(appUser);

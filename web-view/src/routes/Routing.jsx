@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import Registration from "../pages/registration/index.jsx";
 import Login from "../pages/login/index.jsx";
 import ForgotPassword from "../pages/forgot-password/index.jsx";
+import Home from "../pages/home/index.jsx";
 
 const Routing = () => {
     return(
@@ -10,6 +11,7 @@ const Routing = () => {
                 <Route path="/registration" element={<Registration/>}></Route>
                 <Route path="/" element={<Login/>}></Route>
                 <Route path="/forgot-password" element={<ForgotPassword/>}></Route>
+                <Route path="/home" element={<Home/>}></Route>
             </Routes>
         </>
     );

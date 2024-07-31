@@ -18,6 +18,8 @@ import lombok.*;
 public class Folder extends BaseEntity<Long> {
     @Column
     private String name;
+    private String iconColor;
+    private String bgColor;
     @ManyToOne
     @JoinColumn(name = "app_user_id")
     private AppUser appUser;

@@ -16,6 +16,7 @@ export default {
                 'fontLightColor': "#515050",
                 'buttonBackground': "#343F4B",
                 'buttonHover' : "#4f6071",
+                'buttonDanger' : "#CC635E",
                 'primary': "#343F4B",
                 'buttonText': "#FFFFFF",
                 'secondaryBackground': "#F6F8FA",

@@ -23,6 +23,7 @@ export default function Notes({header = "My notes", folderName = ""}) {
         try {
             const response = await postData("/user/all-notes", data, {"email": email})
             if (response.status === 200) {
+                console.log(response.data)
                 setNotes(response.data);
             }
         } catch (error) {

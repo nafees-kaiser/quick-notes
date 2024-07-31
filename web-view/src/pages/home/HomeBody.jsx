@@ -2,8 +2,7 @@ import FolderCard from "../../components/FolderCard.jsx";
 import {useEffect, useState} from "react";
 import {getData} from "../../api/apiCalling.jsx";
 import {Link} from "react-router-dom";
-import AddFolderModal from "./AddFolderModal.jsx";
-import AddNoteModal from "./AddNoteModal.jsx";
+import Notes from "../../components/Notes.jsx";
 
 export default function HomeBody() {
     const [folders, setFolders] = useState([]);
@@ -48,15 +47,8 @@ export default function HomeBody() {
                     ))}
                 </div>
             </div>
-            <div className={"w-full min-h-2/3"}>
-                <h1>My notes</h1>
-                <div>
-
-                </div>
-                <div>
-
-                </div>
-            </div>
+            <div className={"w-full h-20"}></div>
+            <Notes/>
             {/*<AddNoteModal/>*/}
 
         </>

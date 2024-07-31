@@ -10,8 +10,8 @@ export default function NoteCard({title, content, textColor, backgroundColor, da
         >
             <div className={"flex flex-col gap-1.5 w-full h-full"}>
                 <div className={"flex flex-col gap-1.5 items-start justify-start"}>
-                    <div className={"text-sm"} style={{color: textColor}}>{dateCreated}</div>
-                    <div className={"font-bold text-lg"}>{title}</div>
+                    <div className={"text-sm text-left"} style={{color: textColor}}>{dateCreated}</div>
+                    <div className={"font-bold text-lg text-left"}>{title}</div>
                 </div>
                 <div className={"flex flex-col gap-2.5 items-start justify-start w-full h-full"}>
                     <div className={"w-full border-b-2"} style={{borderColor: textColor}}></div>

@@ -69,7 +69,7 @@ public class NoteServiceImpl implements NoteService {
             toUpdate.setBackgroundColor(note.getBackgroundColor());
         }
         if(note.getTextColor() != null){
-            toUpdate.setBackgroundColor(note.getTextColor());
+            toUpdate.setTextColor(note.getTextColor());
         }
         if(note.getFolder() != null){
             Folder folder = folderService.findFolderByNameAndAppUser(email, note.getFolder().getName());

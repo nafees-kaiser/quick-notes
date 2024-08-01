@@ -7,10 +7,7 @@ import com.quicknotes.backend.utils.Convertion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -47,6 +44,18 @@ public class AppUserController {
         try {
             AppUser newAppUser = appUserService.changePassword(appUser);
             return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/user/fetch-user")
+    public ResponseEntity<?> fetchUser(@RequestHeader("email") String email){
+        try {
+            AppUser newAppUser = appUserService.findUserByEmail(email);
+            AppUserView appUserView = Convertion.covertToView(newAppUser, AppUserView.class);
+            return new ResponseEntity<>(appUserView, HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

@@ -6,9 +6,9 @@ import NoteCard from "./NoteCard.jsx";
 import {Link} from "react-router-dom";
 import FolderCard from "./FolderCard.jsx";
 import Tab from "./Tab.jsx";
-import NoteInfoModal from "../pages/NoteView/NoteInfoModal.jsx";
+import NoteInfoModal from "../pages/note-view/NoteInfoModal.jsx";
 
-export default function Notes({header = "My notes", folderName = ""}) {
+export default function Notes({header = "My notes", folderName = "", search=""}) {
     const [modal, setModal] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [notes, setNotes] = useState([]);
@@ -16,12 +16,13 @@ export default function Notes({header = "My notes", folderName = ""}) {
     const email = sessionStorage.getItem("email");
     const data = {
         date: "",
-        search: "",
+        search: search,
         folderName: folderName
     };
     const fetchNotes = async () => {
         try {
             const response = await postData("/user/all-notes", data, {"email": email})
+            console.log(response)
             if (response.status === 200) {
                 console.log(response.data)
                 setNotes(response.data);
@@ -31,12 +32,8 @@ export default function Notes({header = "My notes", folderName = ""}) {
         }
     }
     useEffect(() => {
-
         fetchNotes()
-    }, []);
-    useEffect(() => {
-        fetchNotes()
-    }, [folderName]);
+    }, [folderName, search]);
 
     const {fontLightColor} = customColors
     const noNotes = (
@@ -69,7 +66,7 @@ export default function Notes({header = "My notes", folderName = ""}) {
         <div className={"w-full min-h-2/3 flex flex-col gap-8"}>
             <div className={"flex flex-col gap-6"}>
                 <h1 className={"font-bold text-2xl"}>{header}</h1>
-                <div className={"flex gap-4"}>
+                {notes.length > 0 && <div className={"flex gap-4"}>
                     <Tab
                         name={"all"}
                         isSelected={tabSelected === "all"}
@@ -91,6 +88,8 @@ export default function Notes({header = "My notes", folderName = ""}) {
                         content={"This month"}
                         onClick={(e) => handleFilter(e.target.name)}/>
                 </div>
+                }
+
             </div>
             <div className={"w-fit grid grid-cols-4 gap-2.5"}>
                 {notes.length === 0 ? noNotes :
